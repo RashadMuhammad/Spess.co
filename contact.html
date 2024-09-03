@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - spess.co</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Contact Us Section -->
+    <section class="contact-us bg-light py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <img src="./public/spess.co.banner.jpg" alt="spess.co products" class="img-fluid mb-4 w-75">
+                <h2 class="text-center mb-2">Contact Us</h2>
+                <h6 class="text-center">9074935250 | 9061298795</h6>
+                <div class="col-md-8">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" onsubmit="return validateForm();">
+                        <!-- Web3 Forms Access Key -->
+                        <input type="hidden" name="access_key" value="57e28921-b001-4814-94b4-e49774ad8871">
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name">
+                            <div id="name-error" class="text-danger mt-1"></div> <!-- Error message placeholder -->
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email">
+                            <div id="email-error" class="text-danger mt-1"></div> <!-- Error message placeholder -->
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Message us for more Details"></textarea>
+                            <div id="message-error" class="text-danger mt-1"></div> <!-- Error message placeholder -->
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-warning">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript Form Validation -->
+    <script>
+        function validateForm() {
+            // Get form fields
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var message = document.getElementById("message").value.trim();
+
+            // Get error message divs
+            var nameError = document.getElementById("name-error");
+            var emailError = document.getElementById("email-error");
+            var messageError = document.getElementById("message-error");
+
+            // Regular expression for validating email format
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+            // Clear previous error messages
+            nameError.textContent = "";
+            emailError.textContent = "";
+            messageError.textContent = "";
+
+            // Validation checks
+            var valid = true;
+
+            if (name.length <= 3) {
+                nameError.textContent = "Username must be greater than 3 characters.";
+                valid = false;
+            }
+            if (!emailPattern.test(email)) {
+                emailError.textContent = "Please enter a valid email address.";
+                valid = false;
+            }
+            if (message.length <= 5) {
+                messageError.textContent = "Message must be greater than 5 characters.";
+                valid = false;
+            }
+
+            // If validation passes, allow form submission
+            return valid;
+        }
+    </script>
+
+</body>
+
+</html>
